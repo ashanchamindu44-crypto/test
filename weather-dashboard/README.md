@@ -1,7 +1,7 @@
 # 🌤️ Weather Dashboard
 
-![CI Pipeline](https://github.com/YOUR_USERNAME/weather-dashboard/workflows/CI%20Pipeline/badge.svg)
-![Deploy](https://github.com/YOUR_USERNAME/weather-dashboard/workflows/Deploy%20to%20Production/badge.svg)
+![CI Pipeline](https://github.com/ashanchamindu44-crypto/weather-dashboard/workflows/CI%20Pipeline/badge.svg)
+![Deploy](https://github.com/ashanchamindu44-crypto/weather-dashboard/workflows/Deploy%20to%20Production/badge.svg)
 
 A modern, responsive weather dashboard application that displays current weather conditions and a 5-day forecast for any city worldwide.
 
@@ -23,9 +23,9 @@ The application features a beautiful glassmorphism design with smooth animations
 
 ## 🔗 Live Deployment
 
-🌐 **Live URL:** [https://YOUR_USERNAME.github.io/weather-dashboard](https://YOUR_USERNAME.github.io/weather-dashboard)
+🌐 **Live URL:** [https://ashanchamindu44-crypto.github.io/weather-dashboard](https://ashanchamindu44-crypto.github.io/weather-dashboard)
 
-> ⚠️ **Note:** Replace `YOUR_USERNAME` with your actual GitHub username after deployment.
+> ⚠️ **Note:** Replace `ashanchamindu44-crypto` with your actual GitHub username after deployment.
 
 ## 🛠️ Technologies Used
 
@@ -104,7 +104,7 @@ main          ← Production branch (protected, auto-deploys)
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/weather-dashboard.git
+git clone https://github.com/ashanchamindu44-crypto/weather-dashboard.git
 
 # Navigate to project directory
 cd weather-dashboard
