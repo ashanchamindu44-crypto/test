@@ -1,0 +1,67 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build project
+      run: npm run build
+
+    # ============================================
+    # OPTION 1: Deploy to Vercel (Recommended)
+    # ============================================
+    # Uncomment the section below if using Vercel
+    # 
+    # - name: Deploy to Vercel
+    #   uses: amondnet/vercel-action@v25
+    #   with:
+    #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
+    #     vercel-org-id: ${{ secrets.ORG_ID }}
+    #     vercel-project-id: ${{ secrets.PROJECT_ID }}
+    #     working-directory: ./src
+
+    # ============================================
+    # OPTION 2: Deploy to Netlify
+    # ============================================
+    # Uncomment the section below if using Netlify
+    #
+    # - name: Deploy to Netlify
+    #   uses: netlify/actions/cli@master
+    #   with:
+    #     args: deploy --prod --dir=src
+    #   env:
+    #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+    #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+    # ============================================
+    # OPTION 3: Deploy to GitHub Pages
+    # ============================================
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./src
+        publish_branch: gh-pages
+
+    - name: Deployment Summary
+      run: |
+        echo "🚀 Deployment completed successfully!"
+        echo "📦 Application deployed to production"
+        echo "🌐 Check your deployment URL"
