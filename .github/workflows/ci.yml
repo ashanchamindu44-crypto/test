@@ -2,68 +2,65 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ main, develop, feature/* ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main ]
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-        cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run linter
-      run: npm run lint || echo "Lint check completed"
+      - name: Build project
+        run: npm run build
 
-    - name: Build project
-      run: npm run build || echo "Build completed"
+      - name: Verify build output
+        run: |
+          echo "Checking build output..."
+          if [ -f "dist/index.html" ]; then
+            echo "✅ Build successful"
+          else
+            echo "❌ dist/index.html not found"
+            exit 1
+          fi
 
-    - name: Run tests
-      run: npm test || echo "Tests completed"
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
 
-    - name: Verify HTML structure
-      run: |
-        echo "Checking HTML files..."
-        if [ -f "src/index.html" ]; then
-          echo "✅ index.html found"
-        else
-          echo "❌ index.html not found"
-          exit 1
-        fi
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Verify CSS files
-      run: |
-        echo "Checking CSS files..."
-        if [ -f "src/styles/style.css" ]; then
-          echo "✅ style.css found"
-        else
-          echo "❌ style.css not found"
-          exit 1
-        fi
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Verify JavaScript files
-      run: |
-        echo "Checking JavaScript files..."
-        if [ -f "src/scripts/app.js" ]; then
-          echo "✅ app.js found"
-        else
-          echo "❌ app.js not found"
-          exit 1
-        fi
+      - name: Install dependencies
+        run: npm install
 
-    - name: Build Summary
-      run: |
-        echo "🎉 CI Pipeline completed successfully!"
-        echo "📁 Project structure verified"
-        echo "✅ All checks passed"
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
