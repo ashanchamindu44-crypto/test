@@ -9,7 +9,9 @@ A modern, responsive weather dashboard application that displays current weather
 
 | Role | Name | Student ID |
 |------|------|------------|
-| DevOps Engineer & Full-Stack Developer | K G ASHAN CHAMINDU | ITBNM-2313-0009 |
+| DevOps Engineer  | K G ASHAN CHAMINDU | ITBNM-2313-0009 |
+| Backend Developer | G.O.A.SENARATH | ITBNM-2313-0077 |
+| Frontend Developer | Y.Minruk Gamage | ITBNM-2313-0025 |
 
 ## Project Description
 
