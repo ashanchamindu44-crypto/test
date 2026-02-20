@@ -25,7 +25,7 @@ The application features a modern interface with responsive design across all de
 
 ## Live Deployment
 
-**Live URL:** https://ashanchamindu44-crypto.github.io/weather-dashboard
+**Live URL:** https://test-ymgamages-projects.vercel.app
 
 > Note: Replace `ashanchamindu44-crypto` with your actual GitHub username after deployment.
 
