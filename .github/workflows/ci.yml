@@ -35,7 +35,7 @@ jobs:
     - name: Verify HTML structure
       run: |
         echo "Checking HTML files..."
-        if [ -f "index.html" ]; then
+        if [ -f "src/index.html" ];
           echo "✅ index.html found"
         else
           echo "❌ index.html not found"
@@ -45,7 +45,7 @@ jobs:
     - name: Verify CSS files
       run: |
         echo "Checking CSS files..."
-        if [ -f "styles/style.css" ]; then
+        if [ -f "src/styles/style.css" ];
           echo "✅ style.css found"
         else
           echo "❌ style.css not found"
@@ -55,7 +55,7 @@ jobs:
     - name: Verify JavaScript files
       run: |
         echo "Checking JavaScript files..."
-        if [ -f "scripts/app.js" ]; then
+        if [ -f "src/scripts/app.js" ];
           echo "✅ app.js found"
         else
           echo "❌ app.js not found"
