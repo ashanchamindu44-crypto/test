@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx live-server src --port=3000",
     "start": "npx live-server src --port=3000",
-    "build": "echo 'Build completed successfully' && exit 0",
+    "build": "shx rm -rf dist && shx mkdir -p dist && shx cp -r src/* dist/",
     "lint": "echo 'Lint check passed' && exit 0",
     "test": "echo 'All tests passed' && exit 0"
   },
@@ -20,6 +20,7 @@
   "author": "K G ASHAN CHAMINDU",
   "license": "MIT",
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "shx": "^0.4.0"
   }
 }
